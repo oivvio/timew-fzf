@@ -2,7 +2,7 @@
 
 A [timewarrior](https://timewarrior.net/) extension to list and restart recently tracked intervals with the help of `fzf`.
 
-The extension works with tags and will find uniquely tagged intervals and list them by recency, with the most recent one closest to the prompt. The user can then filter them with the help of `fzf` and start a new interval based on the tags of an old interval.
+The extension works with tags and will find uniquely tagged intervals and list them by recency, with the most recent one closest to the prompt. The user can then filter and browse them with the help of `fzf` and start a new interval based on the tags of an old interval.
 
 ## Screencast
 

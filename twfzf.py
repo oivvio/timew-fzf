@@ -4,13 +4,6 @@
 #
 # A timewarrior extension to list and restart
 # recently tracked intervals with the help of fzf
-#
-# The extension works with tags and the list will find uniquelly
-# tagged intervals and list them by recency, with the most recent one
-# closest to the prompt.
-#
-# Needs fzf to be on PATH
-# Needs timew-report and pyzfz from pypi
 
 import os
 import sys

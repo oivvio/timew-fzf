@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+
+# Stop any running interval
+timew stop
+
+# Open a fzf selection of uniquelly tagged intervals
+# from a time period given on the command line if not period is given
+# default to 6 months
+timew twfzf ${1:-6m}

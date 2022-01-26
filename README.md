@@ -40,8 +40,8 @@ But why do all that typing, like an animal, when you can just type...
 
     rr
 
-to launch a utility script that will stop any currently running interval and then launch the above command which an option to override the 6 months, so...
+to launch a utility script that will stop any currently running interval and then run `timew twfzf 6m` whith an option to override the 6 months, so...
 
     rr 2y
 
-will let you select among intervals from the last two years.
+will let you select among intervals from the last two years, and so on.

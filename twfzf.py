@@ -9,6 +9,7 @@ import os
 import sys
 
 from pyfzf.pyfzf import FzfPrompt
+from plumbum.commands.processes import ProcessExecutionError
 from timewreport.parser import TimeWarriorParser
 
 
@@ -61,12 +62,18 @@ def get_lines_for_fzf():
     return lines
 
 
-# Launch fzf and get a selection
-selection = FzfPrompt().prompt(get_lines_for_fzf(), "--no-sort")[0]
-tags_selection = selection.split("|")[-1].strip()
+try:
+    # Launch fzf and get a selection
+    selection = FzfPrompt().prompt(get_lines_for_fzf(), "--no-sort")[0]
+    tags_selection = selection.split("|")[-1].strip()
 
-# Put the cmd together
-cmd = f"timew start {tags_selection}"
+    # Put the cmd together
+    cmd = f"timew start {tags_selection}"
 
-# run it
-os.system(cmd)
+    # Run it
+    os.system(cmd)
+
+except ProcessExecutionError:
+    # We get here if the user exited fzf without making a selection
+    # in which case we will do nothing
+    pass

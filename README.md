@@ -18,11 +18,17 @@ For timew-fzf to work you need [`fzf`](https://github.com/junegunn/fzf#installat
 
    git clone git@github.com:oivvio/timew-fzf.git
 
-2. Symlink from ~/.timewarrior/extensions
+2. Add symlink from ~/.timewarrior/extensions
 
    cd ~/.timewarrior/extensions
 
    ln -s /path_to_where_you_cloned_the_repo/timew-fzf/twfzf.py
+
+3. Optionally add symlink to the utility script
+
+   cd ~/.local/bin
+
+   ln -s /path_to_where_you_cloned_the_repo/timew-fzf/rr
 
 ## Usage
 
@@ -30,4 +36,12 @@ Start a selection based on intervals from the last 6 months.
 
     timew twfzf 6m
 
-There is a utility script `rr` included in the repo. It will stop any currently running interval and then launch the above command which an option to override the 6 months.
+But why do all that typing, like an animal, when you can just type...
+
+    rr
+
+to launch a utility script that will stop any currently running interval and then launch the above command which an option to override the 6 months, so...
+
+    rr 2y
+
+will let you select among intervals from the last two years.

@@ -69,15 +69,11 @@ def get_lines_for_fzf():
 
 
 # Launch fzf and get a selection
-lines = get_lines_for_fzf()
-# print(lines)
-# exit()
-selection = FzfPrompt().prompt(lines, "--no-sort")[0]
+selection = FzfPrompt().prompt(get_lines_for_fzf(), "--no-sort")[0]
 tags_selection = selection.split("|")[-1].strip()
 
 # Put the cmd together
 cmd = f"timew start {tags_selection}"
 
-print(cmd)
 # run it
 os.system(cmd)

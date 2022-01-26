@@ -12,23 +12,23 @@ The extension works with tags and will find uniquely tagged intervals and list t
 
 **Requirements**
 
-For timew-fzf to work you need [`fzf`](https://github.com/junegunn/fzf#installation) to be on PATH. You will also need to `pip install timew-report` and `pip install pyfzf`.
+For timew-fzf to work you need [`fzf`](https://github.com/junegunn/fzf#installation) to be on PATH. You will also need python3 and you will need to `pip install timew-report` and `pip install pyfzf`.
 
 1. Clone the repo to a location of your liking
 
    git clone git@github.com:oivvio/timew-fzf.git
 
-2. Add symlink from ~/.timewarrior/extensions
+2. Add a symlink from ~/.timewarrior/extensions
 
-   cd ~/.timewarrior/extensions
+   `cd ~/.timewarrior/extensions`
 
-   ln -s /path_to_where_you_cloned_the_repo/timew-fzf/twfzf.py
+   `ln -s /path_to_where_you_cloned_the_repo/timew-fzf/twfzf.py`
 
-3. Optionally add symlink to the utility script
+3. Optionally add a symlink to the utility script
 
-   cd ~/.local/bin
+   `cd ~/.local/bin`
 
-   ln -s /path_to_where_you_cloned_the_repo/timew-fzf/rr
+   `ln -s /path_to_where_you_cloned_the_repo/timew-fzf/rr`
 
 ## Usage
 

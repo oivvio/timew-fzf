@@ -18,11 +18,7 @@ def tags2key(tags):
     return "|".join(sorted(tags))
 
 
-def get_recent_uniquelly_tagged_intervals():
-    # Get all intervals in range
-    parser = TimeWarriorParser(sys.stdin)
-    intervals = parser.get_intervals()
-
+def get_recent_uniquelly_tagged_intervals(intervals):
     # Filter out open intervals
     intervals = [i for i in intervals if not i.is_open()]
 
@@ -37,13 +33,13 @@ def get_recent_uniquelly_tagged_intervals():
     return intervals
 
 
-def get_lines_for_fzf():
+def get_lines_for_fzf(intervals):
     """
     Get lines to feed to fzf. We used | to delimit fields in the output
     which means you can not use | within your timewarrior tags if you want this to work
     """
     lines = []
-    for interval in get_recent_uniquelly_tagged_intervals():
+    for interval in get_recent_uniquelly_tagged_intervals(intervals):
         start = interval.get_start()
         end = interval.get_end()
         minutes = int((end - start).seconds / 60)
@@ -63,15 +59,27 @@ def get_lines_for_fzf():
 
 
 try:
+
+    # Get the parser, config and intervals
+    parser = TimeWarriorParser(sys.stdin)
+    tw_config = parser.get_config()
+    intervals = parser.get_intervals()
+
+    config_printonly = tw_config.get_boolean("printonly", False)
+
     # Launch fzf and get a selection
-    selection = FzfPrompt().prompt(get_lines_for_fzf(), "--no-sort")[0]
+    selection = FzfPrompt().prompt(get_lines_for_fzf(intervals), "--no-sort")[0]
     tags_selection = selection.split("|")[-1].strip()
 
     # Put the cmd together
     cmd = f"timew start {tags_selection}"
 
-    # Run it
-    os.system(cmd)
+    if config_printonly:
+        # Print it
+        print(cmd)
+    else:
+        # Run it
+        os.system(cmd)
 
 except ProcessExecutionError:
     # We get here if the user exited fzf without making a selection

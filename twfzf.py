@@ -68,7 +68,7 @@ try:
     config_printonly = tw_config.get_boolean("printonly", False)
 
     # Launch fzf and get a selection
-    selection = FzfPrompt().prompt(get_lines_for_fzf(intervals), "--no-sort")[0]
+    selection = FzfPrompt().prompt(get_lines_for_fzf(intervals), "--no-sort --exact")[0]
     tags_selection = selection.split("|")[-1].strip()
 
     # Put the cmd together

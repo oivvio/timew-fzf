@@ -18,7 +18,7 @@ def tags2key(tags):
     return "|".join(sorted(tags))
 
 
-def get_recent_uniquelly_tagged_intervals(intervals):
+def get_recent_uniquely_tagged_intervals(intervals):
     # Filter out open intervals
     intervals = [i for i in intervals if not i.is_open()]
 
@@ -39,7 +39,8 @@ def get_lines_for_fzf(intervals):
     which means you can not use | within your timewarrior tags if you want this to work
     """
     lines = []
-    for interval in get_recent_uniquelly_tagged_intervals(intervals):
+
+    for interval in get_recent_uniquely_tagged_intervals(intervals):
         start = interval.get_start()
         end = interval.get_end()
         minutes = int((end - start).seconds / 60)

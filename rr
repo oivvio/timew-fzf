@@ -3,7 +3,6 @@
 # Stop any running interval
 timew stop
 
-# Open a fzf selection of uniquelly tagged intervals
-# from a time period given on the command line if not period is given
-# default to 1 year
+# Open a fzf selection of uniquely tagged intervals from a time period given on
+# the command line. If no period is given default to 1 year
 timew twfzf ${1:-1y}
